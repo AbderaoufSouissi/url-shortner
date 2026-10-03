@@ -16,7 +16,7 @@ public class UrlController {
 	private final UrlService urlService;
 
 
-	@PostMapping
+	@PostMapping("/shorten")
 	public String shortenUrl(@RequestParam String url) {
 
 		return urlService.shortenUrl(url);

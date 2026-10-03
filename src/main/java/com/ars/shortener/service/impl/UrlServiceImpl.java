@@ -27,7 +27,7 @@ public class UrlServiceImpl implements UrlService {
 
 		urlRepository.save(urlEntity);
 
-		return null;
+		return shortCode;
 	}
 
 
