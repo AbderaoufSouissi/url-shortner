@@ -1,5 +1,7 @@
 package com.ars.shortener.service.impl;
 
+import com.ars.shortener.dto.ShortenUrlRequestDto;
+import com.ars.shortener.dto.ShortenUrlResponseDto;
 import com.ars.shortener.entity.UrlEntity;
 import com.ars.shortener.repository.UrlRepository;
 import com.ars.shortener.service.UrlService;
@@ -14,20 +16,20 @@ public class UrlServiceImpl implements UrlService {
 	private final UrlUtils urlUtils;
 
 	@Override
-	public String shortenUrl(String url) {
-		boolean isValid = urlUtils.isValid(url);
+	public ShortenUrlResponseDto shortenUrl(final ShortenUrlRequestDto request) {
+		boolean isValid = urlUtils.isValid(request.url());
 		if(!isValid){
 			throw new RuntimeException("URL is invalid ");
 		}
 		String shortCode = "TODO";
 		var urlEntity = UrlEntity.builder()
-				.mainUrl(url)
+				.mainUrl(request.url())
 				.shortCode(shortCode)
 				.build();
 
 		urlRepository.save(urlEntity);
 
-		return shortCode;
+		return new ShortenUrlResponseDto(urlEntity.getShortCode());
 	}
 
 

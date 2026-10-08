@@ -1,12 +1,11 @@
 package com.ars.shortener.controller;
 
+import com.ars.shortener.dto.ShortenUrlRequestDto;
+import com.ars.shortener.dto.ShortenUrlResponseDto;
 import com.ars.shortener.service.UrlService;
 import com.ars.shortener.service.impl.UrlServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping
@@ -17,8 +16,8 @@ public class UrlController {
 
 
 	@PostMapping("/shorten")
-	public String shortenUrl(@RequestParam String url) {
+	public ShortenUrlResponseDto shortenUrl(@RequestBody ShortenUrlRequestDto request) {
 
-		return urlService.shortenUrl(url);
+		return urlService.shortenUrl(request);
 	}
 }
