@@ -25,7 +25,7 @@ Create a short URL:
 ```powershell
 curl.exe -X POST http://localhost:8080/shorten `
   -H "Content-Type: application/json" `
-  -d '{\"url\":\"https://example.com\"}'
+  -d '{"url":"https://example.com"}'
 ```
 
 The response contains a `shortCode`. Open `http://localhost:8080/{shortCode}` to receive a permanent redirect.
