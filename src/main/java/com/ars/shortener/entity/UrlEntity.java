@@ -14,10 +14,10 @@ public class UrlEntity {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String mainUrl;
 
-    @Column
+    @Column(nullable = false, unique = true, length = 6)
     private String shortCode;
 
 }
