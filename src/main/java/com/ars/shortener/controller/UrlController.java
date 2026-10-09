@@ -12,8 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
-import java.util.NoSuchElementException;
-
 @RestController
 @RequestMapping
 @RequiredArgsConstructor
@@ -44,13 +42,4 @@ public class UrlController {
 				.build();
 	}
 
-	@ExceptionHandler(IllegalArgumentException.class)
-	public ResponseEntity<Void> handleBadRequest(IllegalArgumentException exception) {
-		return ResponseEntity.badRequest().build();
-	}
-
-	@ExceptionHandler(NoSuchElementException.class)
-	public ResponseEntity<Void> handleNotFound(NoSuchElementException exception) {
-		return ResponseEntity.notFound().build();
-	}
 }
